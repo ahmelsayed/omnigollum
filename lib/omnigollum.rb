@@ -88,8 +88,7 @@ module Omnigollum
           origin = '/'
         end
 
-        redirect (request.script_name || '') + options[:route_prefix] + '/auth/' + options[:provider_names].first.to_s.gsub('_', '') + "?origin=" +
-           CGI.escape(origin)
+        redirect (request.script_name || '') + options[:route_prefix] + '/auth/' + options[:provider_names].first.to_s.gsub('_', '')
       else
          auth_config
          require options[:path_views] + '/login'
