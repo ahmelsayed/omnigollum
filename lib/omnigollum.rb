@@ -88,8 +88,7 @@ module Omnigollum
           origin = '/'
         end
 
-        url = request.base_url + '/' + (request.script_name || '') + options[:route_prefix] + '/auth/' + options[:provider_names].first.to_s.gsub('_', '')
-        redirect url.gsub('http://', 'https://')
+        redirect (request.script_name || '') + options[:route_prefix] + '/auth/' + options[:provider_names].first.to_s.gsub('_', '')
       else
          auth_config
          require options[:path_views] + '/login'
