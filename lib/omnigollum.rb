@@ -219,6 +219,12 @@ module Omnigollum
         config.eval_omniauth_config &options[:providers] if options[:provider_names].count == 0
       end
 
+      app.before '/*' do
+        if request.scheme != 'https'
+          redirect "https://#{request.host}#{request.fullpath}"
+        end
+      end
+
       # Populates instance variables used to display currently logged in user
       app.before '/*' do
         @user_authed = user_authed?
